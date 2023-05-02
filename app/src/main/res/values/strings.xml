@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PLANt</string>
+    <string name="spok_title">Splošni podatki o kmetiji</string>
+    <string name="spok_ime">Ime</string>
+    <string name="spok_priimek">Priimek</string>
+    <string name="spok_naslov">Naslov kmetije</string>
+    <string name="spok_katastrska">Katastrska številka zemljišča</string>
+    <string name="spok_panoga">Kmetijska panoga</string>
+    <string name="spok_shrani">Shrani</string>
+    <string name="spok_drugo">Drugo</string>
+</resources>
