@@ -10,6 +10,16 @@
     <string name="spok_drugo">Drugo</string>
     <string name="urnik_title">Urnik</string>
     <string name="razpisi_title">Razpisi</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="reg_nabor_razpisov">
+        <item>Elektronska glasba</item>
+        <item>Jazz</item>
+        <item>Klasična glasba</item>
+        <item>Ljudska glasba</item>
+        <item>Pop</item>
+        <item>Rap</item>
+        <item>Rock</item>
+        <item>Drugo</item>
+    </string-array>
+
 </resources>
