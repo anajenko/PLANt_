@@ -84,7 +84,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_margin="10dp"
         android:hint="@string/spok_drugo"
         android:inputType="textCapWords"
@@ -99,42 +99,39 @@
         />
 
     <RelativeLayout
-        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/btn_spok"
-            android:background="@drawable/baseline_home_24"
-            android:layout_height="80dp"
             android:layout_width="80dp"
-            android:layout_margin="20dp"
-            android:onClick="startActivitySPOK"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
-            />
+            android:layout_margin="20dp"
+            android:background="@drawable/baseline_home_24"
+            android:onClick="startActivitySPOK" />
 
         <ImageButton
             android:id="@+id/btn_urnik"
-            android:background="@drawable/baseline_event_note_24"
-            android:layout_height="72dp"
             android:layout_width="72dp"
-            android:layout_margin="20dp"
-            android:onClick="startActivityUrnik"
-            android:layout_toEndOf="@id/btn_spok"
+            android:layout_height="72dp"
             android:layout_alignParentBottom="true"
-            />
+            android:layout_margin="20dp"
+            android:layout_toEndOf="@id/btn_spok"
+            android:background="@drawable/baseline_event_note_24"
+            android:onClick="startActivityUrnik" />
 
         <ImageButton
             android:id="@+id/btn_razpisi"
-            android:background="@drawable/baseline_library_books_24"
-            android:layout_height="72dp"
             android:layout_width="72dp"
-            android:layout_margin="20dp"
-            android:onClick="startActivityRazpisi"
-            android:layout_toEndOf="@id/btn_urnik"
+            android:layout_height="72dp"
             android:layout_alignParentBottom="true"
-            />
+            android:layout_margin="20dp"
+            android:layout_toEndOf="@id/btn_urnik"
+            android:background="@drawable/baseline_library_books_24"
+            android:onClick="startActivityRazpisi" />
 
     </RelativeLayout>
 
