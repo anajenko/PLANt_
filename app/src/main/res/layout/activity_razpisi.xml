@@ -20,16 +20,17 @@
 
     <SearchView
         android:id="@+id/search"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:iconifiedByDefault="false">
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp">
     </SearchView>
 
     <ListView
         android:id="@+id/nabor_razpisov"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_below="@+id/search"
+        android:layout_height="430dp"
         android:padding="10dp"/>
 
     <RelativeLayout
