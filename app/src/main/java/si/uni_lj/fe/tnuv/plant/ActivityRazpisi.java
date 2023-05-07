@@ -49,11 +49,13 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityRazpisi.this, ActivitySPOK.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
     }
 
     public void startActivityUrnik(View v) {
         Intent intent = new Intent(ActivityRazpisi.this, ActivityUrnik.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
     }
 
     public void startActivityRazpisi(View v) {

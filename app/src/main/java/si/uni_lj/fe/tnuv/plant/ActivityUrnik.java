@@ -1,6 +1,5 @@
 package si.uni_lj.fe.tnuv.plant;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +16,7 @@ public class ActivityUrnik extends AppCompatActivity {
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityUrnik.this, ActivitySPOK.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
     }
 
     public void startActivityUrnik(View v) {
@@ -27,6 +27,7 @@ public class ActivityUrnik extends AppCompatActivity {
     public void startActivityRazpisi(View v) {
         Intent intent = new Intent(ActivityUrnik.this, ActivityRazpisi.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.desno_1,R.anim.desno_2);
     }
 
 }
