@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="@string/spok_ime"
+                android:hint="@string/spok_ime_hint"
                 android:inputType="textCapWords"
                 />
 
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="@string/spok_priimek"
+                android:hint="@string/spok_priimek_hint"
                 android:inputType="textCapWords"
                 />
 
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_naslov"
+        android:hint="@string/spok_naslov_hint"
         android:inputType="textCapWords"
         />
 
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_katastrska"
+        android:hint="@string/spok_katastrska_hint"
         android:inputType="textCapWords"
         />
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_panoga"
+        android:hint="@string/spok_panoga_hint"
         android:inputType="textCapWords"
         />
 
@@ -91,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"
-        android:hint="@string/spok_drugo"
+        android:hint="@string/spok_drugo_hint"
         android:inputType="textCapWords"
         />
 

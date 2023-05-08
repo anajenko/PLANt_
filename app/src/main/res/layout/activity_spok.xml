@@ -31,10 +31,11 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/vnosno_ime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="@string/spok_ime"
+                android:hint="@string/spok_ime_hint"
                 android:inputType="textCapWords"
                 />
 
@@ -47,10 +48,11 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/vnosno_priimek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:hint="@string/spok_priimek"
+                android:hint="@string/spok_priimek_hint"
                 android:inputType="textCapWords"
                 />
 
@@ -59,34 +61,38 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/vnosno_naslovKmetije"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_naslov"
+        android:hint="@string/spok_naslov_hint"
         android:inputType="textCapWords"
         />
 
     <EditText
+        android:id="@+id/vnosno_katastrska"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_katastrska"
+        android:hint="@string/spok_katastrska_hint"
         android:inputType="textCapWords"
         />
 
     <EditText
+        android:id="@+id/vnosno_panoga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_panoga"
+        android:hint="@string/spok_panoga_hint"
         android:inputType="textCapWords"
         />
 
     <EditText
+        android:id="@+id/vnosno_drugo"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:hint="@string/spok_drugo"
+        android:hint="@string/spok_drugo_hint"
         android:inputType="textCapWords"
         />
 
@@ -98,40 +104,55 @@
         android:text="@string/spok_shrani"
         />
 
+    <TextView
+        android:id="@+id/izpis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_spok"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
-            android:background="@drawable/baseline_home_24"
-            android:onClick="startActivitySPOK" />
+            android:layout_marginStart="20dp"
+            android:background="@drawable/background_gumbi"
+            android:onClick="startActivitySPOK"
+            android:scaleType="fitCenter"
+            android:padding="10dp"
+            android:src="@drawable/baseline_home_24" />
 
         <ImageButton
             android:id="@+id/btn_urnik"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:layout_toEndOf="@id/btn_spok"
-            android:background="@drawable/baseline_event_note_24"
-            android:onClick="startActivityUrnik" />
+            android:background="@drawable/background_gumbi"
+            android:onClick="startActivityUrnik"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_event_note_24" />
 
         <ImageButton
             android:id="@+id/btn_razpisi"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentBottom="true"
-            android:layout_margin="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_toEndOf="@id/btn_urnik"
-            android:background="@drawable/baseline_library_books_24"
-            android:onClick="startActivityRazpisi" />
+            android:background="@drawable/background_gumbi"
+            android:onClick="startActivityRazpisi"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_library_books_24" />
 
     </RelativeLayout>
 
