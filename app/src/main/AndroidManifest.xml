@@ -12,17 +12,26 @@
         android:theme="@style/Theme.PLANt"
         tools:targetApi="31">
         <activity
+            android:name=".Razpis3"
+            android:exported="false" />
+        <activity
+            android:name=".Razpis2"
+            android:exported="false" />
+        <activity
+            android:name=".Razpis1"
+            android:exported="false" />
+        <activity
             android:name=".ActivitySPOK"
-            android:launchMode="singleTask"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ActivityUrnik" />
+        <activity android:name=".ActivityUrnik" />
         <activity android:name=".ActivityRazpisi" />
-
     </application>
 
 </manifest>

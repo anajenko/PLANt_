@@ -3,11 +3,14 @@ package si.uni_lj.fe.tnuv.plant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -22,7 +25,7 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_razpisi);
 
-        razpiski = new String[]{"Razpis 1: Kupovanje novih panjev", "Razpis 2: Pomoč za žrtve poplave", "Razpis 3: Gnojila",
+        razpiski = new String[]{"Razpis 1: Kupovanje novih panjev", "Razpis 2: Denarna pomoč za žrtve poplave", "Razpis 3: Gnojila",
                 "Razpis 4: Predsednik kmetijske zadruge", "Razpis 5: Finančni dodatek kmetu", "Razpis 6: Podarjena koza", "Razpis 7: Brezplačno seme češnjevcev", "Razpis 8: Prehranski dodatki za kokoši",
                 "Razpis 9: Avtomatska vrata za kokošnjak","Razpis 10: Samovozeča kosilnica","Razpis 11: Tečaj 'candlinga'"};
 
@@ -44,6 +47,45 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         // Locate the EditText in listview_main.xml
         editsearch = (SearchView) findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this);
+
+        //drugi del
+        //ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arraylist);
+        //list.setAdapter(arrayAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(ActivityRazpisi.this, Razpis1.class));
+                        break;
+                    case 1:
+                        startActivity(new Intent(ActivityRazpisi.this, Razpis2.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(ActivityRazpisi.this, Razpis3.class));
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        break;
+                    case 8:
+                        break;
+                    case 9:
+                        break;
+                    case 10:
+                        break;
+                    case 11:
+                        break;
+                }
+
+            }
+        });
     }
 
     public void startActivitySPOK(View v) {

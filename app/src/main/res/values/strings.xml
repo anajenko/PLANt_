@@ -9,14 +9,6 @@
     <string name="spok_drugo_hint">Drugo</string>
     <string name="spok_shrani">Shrani</string>
 
-    <!--<string name="value_ime">Ime</string>
-    <string name="value_priimek">Priimek</string>
-    <string name="value_naslov">Naslov kmetije</string>
-    <string name="value_katastrska">Katastrska številka zemljišča</string>
-    <string name="value_panoga">Kmetijska panoga</string>
-    <string name="value_shrani">Shrani</string>
-    <string name="value_drugo">Drugo</string>-->
-
     <string name="urnik_title">Urnik</string>
 
     <string name="razpisi_title">Razpisi</string>
