@@ -93,8 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/spok_drugo_hint"
-        android:inputType="textCapWords"
-        />
+        android:inputType="textCapWords" />
 
     <Button
         android:id="@+id/btn_spok_shrani"

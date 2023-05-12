@@ -24,6 +24,11 @@
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal">
 
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="334dp"
+            android:layout_height="590dp" />
+
         <ImageButton
             android:id="@+id/btn_spok"
             android:layout_width="80dp"
@@ -32,8 +37,8 @@
             android:layout_marginStart="20dp"
             android:background="@drawable/background_gumbi"
             android:onClick="startActivitySPOK"
-            android:scaleType="fitCenter"
             android:padding="10dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/baseline_home_24" />
 
         <ImageButton

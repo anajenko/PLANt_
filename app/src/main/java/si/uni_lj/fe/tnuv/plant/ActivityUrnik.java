@@ -3,7 +3,11 @@ package si.uni_lj.fe.tnuv.plant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CalendarView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 public class ActivityUrnik extends AppCompatActivity {
 
@@ -11,6 +15,13 @@ public class ActivityUrnik extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urnik);
+    }
+    
+    private void IzberaDatuma(){
+        CalendarView calendarView = findViewById(R.id.calendarView);
+                //calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            // Do something when a date is selected, such as display events for that date
+
     }
 
     public void startActivitySPOK(View v) {
