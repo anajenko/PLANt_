@@ -6,7 +6,7 @@
     <string name="spok_naslov_hint">Naslov kmetije</string>
     <string name="spok_katastrska_hint">Katastrska številka zemljišča</string>
     <string name="spok_panoga_hint">Kmetijska panoga</string>
-    <string name="spok_drugo_hint">Drugo</string>
+    <string name="spok_drugo_hint">  Drugo</string>
     <string name="spok_shrani">Shrani</string>
 
     <string name="urnik_title">Urnik</string>

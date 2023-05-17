@@ -91,10 +91,12 @@
     <EditText
         android:id="@+id/vnosno_drugo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:layout_margin="10dp"
         android:hint="@string/spok_drugo_hint"
-        android:inputType="textCapWords" />
+        android:inputType="textCapWords"
+        android:background="@drawable/background_drugo"
+        />
 
     <Button
         android:id="@+id/btn_spok_shrani"
