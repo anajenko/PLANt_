@@ -25,18 +25,16 @@
         </activity>
         <activity android:name=".ActivityUrnik"
             android:label="Urnik"/>
+        <activity android:name=".WeekViewActivity" />
+        <activity android:name=".EventEditActivity" />
         <activity android:name=".ActivityRazpisi"
             android:label="Razpisi"/>
         <activity
-            android:name=".Razpis1"
-            android:exported="false" />
+            android:name=".Razpis1"/>
         <activity
-            android:name=".Razpis2"
-            android:exported="false" />
+            android:name=".Razpis2"/>
         <activity
-            android:name=".Razpis3"
-            android:exported="false" />
-
+            android:name=".Razpis3" />
     </application>
 
 </manifest>
