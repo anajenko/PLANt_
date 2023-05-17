@@ -12,6 +12,7 @@
     <string name="urnik_title">Urnik</string>
 
     <string name="razpisi_title">Razpisi</string>
+    <string name="plant_naslovapp">PLANt</string>
 
     <string-array name="reg_nabor_razpisov">
         <item>Elektronska glasba</item>

@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class ActivityUrnik extends AppCompatActivity {
 
@@ -15,6 +17,9 @@ public class ActivityUrnik extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urnik);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
     }
     
     private void IzberaDatuma(){

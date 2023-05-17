@@ -11,27 +11,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PLANt"
         tools:targetApi="31">
-        <activity
-            android:name=".Razpis3"
-            android:exported="false" />
-        <activity
-            android:name=".Razpis2"
-            android:exported="false" />
-        <activity
-            android:name=".Razpis1"
-            android:exported="false" />
+
         <activity
             android:name=".ActivitySPOK"
             android:exported="true"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:label="Splošni podatki o kmetiji">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityUrnik" />
-        <activity android:name=".ActivityRazpisi" />
+        <activity android:name=".ActivityUrnik"
+            android:label="Urnik"/>
+        <activity android:name=".ActivityRazpisi"
+            android:label="Razpisi"/>
+        <activity
+            android:name=".Razpis1"
+            android:exported="false" />
+        <activity
+            android:name=".Razpis2"
+            android:exported="false" />
+        <activity
+            android:name=".Razpis3"
+            android:exported="false" />
+
     </application>
 
 </manifest>
