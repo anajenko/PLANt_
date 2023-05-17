@@ -31,6 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityUrnik" />
+        <activity android:name=".WeekViewActivity" />
+        <activity android:name=".EventEditActivity" />
         <activity android:name=".ActivityRazpisi" />
     </application>
 

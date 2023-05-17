@@ -1,16 +1,10 @@
 package si.uni_lj.fe.tnuv.plant;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.CalendarView;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -21,21 +15,24 @@ import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.OnItemListener{
+import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInMonthArray;
+import static si.uni_lj.fe.tnuv.plant.CalendarUtils.monthYearFromDate;
 
+public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.OnItemListener
+{
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
-    private LocalDate selectedDate;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urnik);
         initWidgets();
-        selectedDate = LocalDate.now();
+        CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
     }
-
 
     private void initWidgets()
     {
@@ -45,8 +42,8 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
 
     private void setMonthView()
     {
-        monthYearText.setText(monthYearFromDate(selectedDate));
-        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
+        monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
 
         CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
@@ -54,60 +51,32 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
         calendarRecyclerView.setAdapter(calendarAdapter);
     }
 
-    private ArrayList<String> daysInMonthArray(LocalDate date)
-    {
-        ArrayList<String> daysInMonthArray = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-
-        int daysInMonth = yearMonth.lengthOfMonth();
-
-        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
-        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-
-        for(int i = 1; i <= 42; i++)
-        {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
-                daysInMonthArray.add("");
-            }
-            else
-            {
-                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-            }
-        }
-        return  daysInMonthArray;
-    }
-
-    private String monthYearFromDate(LocalDate date)
-    {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM yyyy");
-        return date.format(formatter);
-    }
-
     public void previousMonthAction(View view)
     {
-        selectedDate = selectedDate.minusMonths(1);
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
         setMonthView();
     }
 
     public void nextMonthAction(View view)
     {
-        selectedDate = selectedDate.plusMonths(1);
+        CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusMonths(1);
         setMonthView();
     }
 
     @Override
-    public void onItemClick(int position, String dayText)
+    public void onItemClick(int position, LocalDate date)
     {
-        if(!dayText.equals(""))
+        if(date != null)
         {
-            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            CalendarUtils.selectedDate = date;
+            setMonthView();
         }
     }
-    
 
-
+    public void weeklyAction(View view)
+    {
+        startActivity(new Intent(this, WeekViewActivity.class));
+    }
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityUrnik.this, ActivitySPOK.class);
         startActivity(intent);
