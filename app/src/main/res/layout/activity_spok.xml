@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ActivitySPOK"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:background="@drawable/ozadje_bright1">
 
     <TextView
         android:layout_width="wrap_content"

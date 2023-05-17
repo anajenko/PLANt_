@@ -14,12 +14,12 @@
 
     <color name="zelena">#6F9C63</color>
 
-    <!--iz adobe color wheel - monochromatic-->
     <color name="zelena1">#58a758</color>
     <color name="zelena2">#BBE1BB</color>
     <color name="zelena3">#74DB74</color>
     <color name="zelena4">#4C5C4C</color>
-    <color name="zelena5">#59A859</color>
+    <!--<color name="zelena5">#F5FFF5</color>-->
+    <color name="zelena5">#CFE8D6</color>
 
 
 </resources>

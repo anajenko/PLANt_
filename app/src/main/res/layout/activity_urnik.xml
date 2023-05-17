@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".ActivityUrnik"
     android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="30dp"
+    android:background="@drawable/ozadje_bright1">
 
     <Button
         android:layout_width="wrap_content"
@@ -133,7 +134,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/calendarRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="450dp"/>
+        android:layout_height="420dp"/>
 
 
 
