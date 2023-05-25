@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SPOKFragment">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ActivitySPOK"
-        android:orientation="vertical"
-        android:padding="30dp">
+    tools:context=".SPOKFragment"
+    android:orientation="vertical"
+    android:padding="30dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,73 +23,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <EditText
+            android:id="@+id/vnosno_ime"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/spok_ime_hint"
-                android:inputType="textCapWords"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+            android:layout_margin="10dp"
+            android:hint="@string/spok_ime_hint"
+            android:inputType="textCapWords"
             android:layout_weight="1"
+            />
+
+        <EditText
+            android:id="@+id/vnosno_priimek"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/spok_priimek_hint"
-                android:inputType="textCapWords"
-                />
-
-        </LinearLayout>
+            android:layout_margin="10dp"
+            android:hint="@string/spok_priimek_hint"
+            android:inputType="textCapWords"
+            android:layout_weight="1"
+            />
 
     </LinearLayout>
 
     <EditText
+        android:id="@+id/vnosno_naslovKmetije"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/spok_naslov_hint"
         android:inputType="textCapWords"
+        android:layout_weight="1"
         />
 
     <EditText
+        android:id="@+id/vnosno_katastrska"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/spok_katastrska_hint"
-        android:inputType="textCapWords"
+        android:layout_weight="1"
         />
 
     <EditText
+        android:id="@+id/vnosno_panoga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:hint="@string/spok_panoga_hint"
-        android:inputType="textCapWords"
+        android:layout_weight="1"
         />
 
     <EditText
+        android:id="@+id/vnosno_drugo"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
         android:layout_margin="10dp"
         android:hint="@string/spok_drugo_hint"
         android:inputType="textCapWords"
+        android:background="@drawable/background_drugo"
         />
 
     <Button
@@ -101,6 +92,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/spok_shrani"
+        android:layout_weight="1"
         />
-    </LinearLayout>
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/izpis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

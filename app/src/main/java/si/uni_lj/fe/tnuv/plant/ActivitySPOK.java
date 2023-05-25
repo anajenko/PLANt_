@@ -1,15 +1,19 @@
 package si.uni_lj.fe.tnuv.plant;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 
@@ -18,12 +22,16 @@ public class ActivitySPOK extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spok);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_view, SPOKFragment.class, null)
+                    .commit();
+        }
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
-
-        findViewById(R.id.btn_spok_shrani).setOnClickListener(v -> shrani());
     }
 
     private void shrani() {
@@ -61,23 +69,6 @@ public class ActivitySPOK extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.izpis)).setText(ime + " " + priimek + " " + naslov + " " + katastrska + " " + panoga + " " + drugo);
 
-    }
-
-    public void startActivitySPOK(View v) {
-        Intent intent = new Intent(ActivitySPOK.this, ActivitySPOK.class);
-        startActivity(intent);
-    }
-
-    public void startActivityUrnik(View v) {
-        Intent intent = new Intent(ActivitySPOK.this, ActivityUrnik.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.desno_1,R.anim.desno_2);
-    }
-
-    public void startActivityRazpisi(View v) {
-        Intent intent = new Intent(ActivitySPOK.this, ActivityRazpisi.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.desno_1,R.anim.desno_2);
     }
 }
 

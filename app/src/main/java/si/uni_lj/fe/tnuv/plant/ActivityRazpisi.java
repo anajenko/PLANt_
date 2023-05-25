@@ -2,10 +2,8 @@ package si.uni_lj.fe.tnuv.plant;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBar;
@@ -21,13 +19,20 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
     ListViewAdapter adapter;
     SearchView editsearch;
     String[] razpiski;
-    ArrayList<Razpis> arraylist = new ArrayList<Razpis>();
+    ArrayList<Razpis> arraylist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_razpisi);
 
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_view, RazpisiFragment.class, null)
+                    .commit();
+        }
+
+        ///dodaj!! tudi drugod
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
 
@@ -37,6 +42,7 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
 
         // Locate the ListView in listview_main.xml
         list = (ListView) findViewById(R.id.nabor_razpisov);
+        System.out.println(list);
 
         for (int i = 0; i < razpiski.length; i++) {
             Razpis animalNames = new Razpis(razpiski[i]);
@@ -68,45 +74,10 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
                     case 2:
                         startActivity(new Intent(ActivityRazpisi.this, Razpis3.class));
                         break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
                 }
 
             }
         });
-    }
-
-    public void startActivitySPOK(View v) {
-        Intent intent = new Intent(ActivityRazpisi.this, ActivitySPOK.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
-    }
-
-    public void startActivityUrnik(View v) {
-        Intent intent = new Intent(ActivityRazpisi.this, ActivityUrnik.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
-    }
-
-    public void startActivityRazpisi(View v) {
-        Intent intent = new Intent(ActivityRazpisi.this, ActivityRazpisi.class);
-        startActivity(intent);
     }
 
     @Override

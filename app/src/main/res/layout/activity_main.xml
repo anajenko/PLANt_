@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitySPOK"
     android:orientation="vertical"
-    android:padding="30dp">
+    tools:context=".MainActivity"
+    android:background="@drawable/ozadje_bright1">
 
-    <RelativeLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7">
 
-        <Button
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!-->android:name="si.uni_lj.fe.tnuv.plant.SPOKFragment"-->
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1">
+
+        <ImageButton
             android:id="@+id/btn_spok"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="SPOK"
-            android:onClick="startActivitySPOK"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/background_gumbi"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_home_24" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_urnik"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/urnik_title"
-            android:onClick="startActivityUrnik"
-            android:layout_toEndOf="@id/btn_spok"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/background_gumbi"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_event_note_24" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_razpisi"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/razpisi_title"
-            android:onClick="startActivityRazpisi"
-            android:layout_toEndOf="@id/btn_urnik"
-            android:layout_alignParentBottom="true"
-            />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/background_gumbi"
+            android:padding="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_library_books_24" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

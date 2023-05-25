@@ -1,64 +1,69 @@
 package si.uni_lj.fe.tnuv.plant;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SPOKFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.Objects;
+
 public class SPOKFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public SPOKFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SPOKFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SPOKFragment newInstance(String param1, String param2) {
-        SPOKFragment fragment = new SPOKFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Button shrani = inflater.inflate(R.layout.fragment_s_p_o_k, container, false).findViewById(R.id.btn_spok_shrani);
+        shrani.setOnClickListener(v -> shrani());
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_s_p_o_k, container, false);
+    }
+    private void shrani() {
+        EditText vnosno1 = getView().findViewById(R.id.vnosno_ime);
+        EditText vnosno2 = getView().findViewById(R.id.vnosno_priimek);
+        EditText vnosno3 = getView().findViewById(R.id.vnosno_naslovKmetije);
+        EditText vnosno4 = getView().findViewById(R.id.vnosno_katastrska);
+        EditText vnosno5 = getView().findViewById(R.id.vnosno_panoga);
+        EditText vnosno6 = getView().findViewById(R.id.vnosno_drugo);
+        String ime = vnosno1.getText().toString();
+        String priimek = vnosno2.getText().toString();
+        String naslov = vnosno3.getText().toString();
+        String katastrska = vnosno4.getText().toString();
+        String panoga = vnosno5.getText().toString();
+        String drugo = vnosno6.getText().toString();
+
+        String imeKljuc = getResources().getString(R.string.spok_ime_hint);
+        String priimekKljuc = getResources().getString(R.string.spok_priimek_hint);
+        String naslovKljuc = getResources().getString(R.string.spok_naslov_hint);
+        String katastrskaKljuc = getResources().getString(R.string.spok_katastrska_hint);
+        String panogaKljuc = getResources().getString(R.string.spok_panoga_hint);
+        String drugoKljuc = getResources().getString(R.string.spok_drugo_hint);
+
+        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPrefs.edit();
+
+        editor.putString(imeKljuc, ime);
+        editor.putString(priimekKljuc, priimek);
+        editor.putString(naslovKljuc, naslov);
+        editor.putString(katastrskaKljuc, katastrska);
+        editor.putString(panogaKljuc, panoga);
+        editor.putString(drugoKljuc, drugo);
+        ///editor.commit(); rajs apply
+        editor.apply();
+
+        ((TextView) getView().findViewById(R.id.izpis)).setText(ime + " " + priimek + " " + naslov + " " + katastrska + " " + panoga + " " + drugo);
+
     }
 }

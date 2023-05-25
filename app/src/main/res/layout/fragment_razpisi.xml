@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RazpisiFragment">
+    tools:context=".UrnikFragment"
+    android:orientation="vertical"
+    android:padding="30dp">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/razpisi_title"
+        android:layout_marginTop="10dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        />
+
+    <SearchView
+        android:id="@+id/search"
+        android:background="@drawable/background_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ActivitySPOK"
-        android:orientation="vertical"
-        android:padding="30dp">
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="10dp">
+    </SearchView>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/razpisi_title"
-            android:layout_marginTop="10dp"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            />
+    <ListView
+        android:id="@+id/nabor_razpisov"
+        android:layout_width="match_parent"
+        android:layout_height="430dp"
+        android:padding="10dp"/>
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"/>
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>
