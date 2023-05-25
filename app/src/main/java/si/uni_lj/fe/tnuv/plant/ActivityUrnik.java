@@ -91,8 +91,6 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
     }
 
     public void startActivityUrnik(View v) {
-        Intent intent = new Intent(ActivityUrnik.this, ActivityUrnik.class);
-        startActivity(intent);
     }
 
     public void startActivityRazpisi(View v) {

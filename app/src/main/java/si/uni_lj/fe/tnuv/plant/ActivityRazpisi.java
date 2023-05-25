@@ -1,11 +1,16 @@
 package si.uni_lj.fe.tnuv.plant;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.ActionBar;
@@ -92,6 +97,16 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         });
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return false;
+    }
+
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityRazpisi.this, ActivitySPOK.class);
         startActivity(intent);
@@ -105,18 +120,6 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
     }
 
     public void startActivityRazpisi(View v) {
-        Intent intent = new Intent(ActivityRazpisi.this, ActivityRazpisi.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-    @Override
-    public boolean onQueryTextChange(String newText) {
-        adapter.filter(newText);
-        return false;
     }
 
 }

@@ -9,153 +9,133 @@
     android:padding="30dp"
     android:background="@drawable/ozadje_bright1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/spok_title"
-        android:layout_marginTop="10dp"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/spok_title"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginVertical="5dp">
 
             <EditText
                 android:id="@+id/vnosno_ime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:hint="@string/spok_ime_hint"
                 android:inputType="textCapWords"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                android:layout_weight="1"/>
 
             <EditText
                 android:id="@+id/vnosno_priimek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
                 android:hint="@string/spok_priimek_hint"
                 android:inputType="textCapWords"
-                />
-
+                android:layout_weight="1"/>
         </LinearLayout>
+
+        <EditText
+            android:id="@+id/vnosno_naslovKmetije"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/spok_naslov_hint"
+            android:inputType="textCapSentences"
+            android:layout_marginVertical="5dp"/>
+
+        <EditText
+            android:id="@+id/vnosno_katastrska"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/spok_katastrska_hint"
+            android:layout_marginVertical="5dp"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/vnosno_panoga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/spok_panoga_hint"
+            android:layout_marginVertical="5dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/vnosno_drugo"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:layout_marginVertical="5dp"
+            android:hint="@string/spok_drugo_hint"
+            android:inputType="textCapSentences"
+            android:background="@drawable/background_drugo"/>
+        <!--android:layout_height="160dp"-->
+
+        <Button
+            android:id="@+id/btn_spok_shrani"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/spok_shrani"/>
+
+        <TextView
+            android:id="@+id/izpis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/vnosno_naslovKmetije"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/spok_naslov_hint"
-        android:inputType="textCapWords"
-        />
-
-    <EditText
-        android:id="@+id/vnosno_katastrska"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/spok_katastrska_hint"
-        android:inputType="textCapWords"
-        />
-
-    <EditText
-        android:id="@+id/vnosno_panoga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="@string/spok_panoga_hint"
-        android:inputType="textCapWords"
-        />
-
-    <EditText
-        android:id="@+id/vnosno_drugo"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_margin="10dp"
-        android:hint="@string/spok_drugo_hint"
-        android:inputType="textCapWords"
-        android:background="@drawable/background_drugo"
-        />
-
-    <Button
-        android:id="@+id/btn_spok_shrani"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="@string/spok_shrani"
-        />
-
-    <TextView
-        android:id="@+id/izpis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_weight="1">
 
         <ImageButton
             android:id="@+id/btn_spok"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/background_gumbi"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/background_gumbi_active"
             android:onClick="startActivitySPOK"
             android:scaleType="fitCenter"
-            android:padding="10dp"
-            android:src="@drawable/baseline_home_24" />
+            android:padding="8dp"
+            android:src="@drawable/baseline_home_24"/>
 
         <ImageButton
             android:id="@+id/btn_urnik"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_toEndOf="@id/btn_spok"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/background_gumbi"
             android:onClick="startActivityUrnik"
-            android:padding="15dp"
+            android:padding="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/baseline_event_note_24" />
+            android:src="@drawable/baseline_event_note_24"/>
 
         <ImageButton
             android:id="@+id/btn_razpisi"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="20dp"
-            android:layout_toEndOf="@id/btn_urnik"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/background_gumbi"
             android:onClick="startActivityRazpisi"
-            android:padding="15dp"
+            android:padding="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/baseline_library_books_24" />
+            android:src="@drawable/baseline_library_books_24"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

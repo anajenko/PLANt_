@@ -28,6 +28,7 @@
         <activity android:name=".WeekViewActivity" />
         <activity android:name=".EventEditActivity" />
         <activity android:name=".ActivityRazpisi"
+            android:windowSoftInputMode="adjustPan"
             android:label="Razpisi"/>
         <activity
             android:name=".Razpis1"/>
