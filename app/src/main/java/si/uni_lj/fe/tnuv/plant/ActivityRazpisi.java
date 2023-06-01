@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -17,16 +16,27 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.SearchView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
+import java.util.List;
+
+import android.util.Log;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+
+import org.json.JSONObject;
+
 
 public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     ListView list;
-    ListViewAdapter adapter;
-    SearchView editsearch;
-    String[] razpiski;
-    ArrayList<Razpis> arraylist = new ArrayList<Razpis>();
+    private ArrayList<HashMap<String, String>> seznamRazpisov;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,74 +46,66 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
 
-        razpiski = new String[]{"Razpis 1: Kupovanje novih panjev", "Razpis 2: Denarna pomoč za žrtve poplave", "Razpis 3: Gnojila",
-                "Razpis 4: Predsednik kmetijske zadruge", "Razpis 5: Finančni dodatek kmetu", "Razpis 6: Podarjena koza", "Razpis 7: Brezplačno seme češnjevcev", "Razpis 8: Prehranski dodatki za kokoši",
-                "Razpis 9: Avtomatska vrata za kokošnjak","Razpis 10: Samovozeča kosilnica","Razpis 11: Tečaj 'candlinga'"};
+        try {
+            preberiRazpise();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        list = findViewById(R.id.nabor_razpisov);
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            //Toast.makeText(this, "Klik na " + position, Toast.LENGTH_SHORT).show();
+            String ime = (String) ((HashMap)seznamRazpisov.get(position)).get("title");
+            Toast.makeText(this, "Klik na " + ime, Toast.LENGTH_SHORT).show();
+        });
+    }
 
-        // Locate the ListView in listview_main.xml
-        list = (ListView) findViewById(R.id.nabor_razpisov);
+    private void preberiRazpise() throws IOException {
 
-        for (int i = 0; i < razpiski.length; i++) {
-            Razpis animalNames = new Razpis(razpiski[i]);
-            // Binds all strings into an array
-            arraylist.add(animalNames);
+        InputStream is = getAssets().open("json_razpisi.json");
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append('\n');
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        // Pass results to ListViewAdapter Class
-        adapter = new ListViewAdapter(this, arraylist);
+        String rezultat = sb.toString();
 
-        // Binds the Adapter to the ListView
+        //Toast.makeText(this, rezultat, Toast.LENGTH_LONG).show();
+        seznamRazpisov = new RazpisiJsonParser().parseToArrayList(rezultat);
+
+        SimpleAdapter adapter = new SimpleAdapter(
+                this,
+                seznamRazpisov,
+                R.layout.list_view_items,
+                new String[] {"num", "title"},
+                new int[] {R.id.num, R.id.title}
+        );
+
+        list = findViewById(R.id.nabor_razpisov);
         list.setAdapter(adapter);
 
-        // Locate the EditText in listview_main.xml
-        editsearch = (SearchView) findViewById(R.id.search);
-        editsearch.setOnQueryTextListener(this);
-
-        //drugi del
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-                    case 0:
-                        startActivity(new Intent(ActivityRazpisi.this, Razpis1.class));
-                        break;
-                    case 1:
-                        startActivity(new Intent(ActivityRazpisi.this, Razpis2.class));
-                        break;
-                    case 2:
-                        startActivity(new Intent(ActivityRazpisi.this, Razpis3.class));
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    case 7:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
-                    case 10:
-                        break;
-                    case 11:
-                        break;
-                }
-
-            }
-        });
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
     }
+
     @Override
     public boolean onQueryTextChange(String newText) {
-        adapter.filter(newText);
         return false;
     }
 
@@ -121,5 +123,4 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
 
     public void startActivityRazpisi(View v) {
     }
-
 }
