@@ -17,7 +17,6 @@ public class RazpisiJsonParser {
 
             // Getting JSON Array node
             JSONArray razpisi1 = jsonObj.getJSONArray("razpisi");
-
             // looping through All Razpisi
             for (int i = 0; i < razpisi1.length(); i++) {
                 JSONObject r = razpisi1.getJSONObject(i);
