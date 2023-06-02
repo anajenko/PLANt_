@@ -4,20 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.SearchView;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
-
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
@@ -26,9 +22,7 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
     ListView list;
     SearchView editsearch;
     private ArrayList<HashMap<String, String>> seznamRazpisov;
-    private ArrayList razpisiTitles;
-    ListViewAdapter adapter1;
-    ArrayList<Razpis> arraylist = new ArrayList<Razpis>();
+    SimpleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,46 +38,21 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
             throw new RuntimeException(e);
         }
         list = findViewById(R.id.nabor_razpisov);
+
+        //***tole bo slo se ven
         list.setOnItemClickListener((parent, view, position, id) -> {
             //Toast.makeText(this, "Klik na " + position, Toast.LENGTH_SHORT).show();
             String ime = (String) ((HashMap)seznamRazpisov.get(position)).get("title");
             Toast.makeText(this, "Klik na " + ime, Toast.LENGTH_SHORT).show();
         });
 
-        //NAREST TABELO STRINGOV KOT ZAPISKI
-        razpisiTitles = new ArrayList();
-        System.out.println(seznamRazpisov);
-        for (HashMap<String, String> map : seznamRazpisov)
-            for (Map.Entry<String, String> mapEntry : map.entrySet())
-            {
-                if (mapEntry.getKey() == "title"){
-                String title1 = mapEntry.getValue();
-                razpisiTitles.add(title1);
-                }
-            }
-        System.out.println(razpisiTitles);
-
-        //ISKANJE?
-
-        for (int i = 0; i < razpisiTitles.size(); i++) {
-            String s = (String) razpisiTitles.get(i);
-            Razpis razpisek = new Razpis(s);
-            // Binds all strings into an array
-            arraylist.add(razpisek);
-        }
-
-        // Pass results to ListViewAdapter Class
-        adapter1 = new ListViewAdapter(this, arraylist);
-
-        // Binds the Adapter to the ListView
-        //list.setAdapter(adapter1);
-
-        // Locate the EditText in listview_main.xml
+        //ISKANJE
         editsearch = (SearchView) findViewById(R.id.search);
-        editsearch.setOnQueryTextListener(this);
+        editsearch.setOnQueryTextListener(this); //onQueryTextSubmit, onQueryTextChange
 
         //drugi del
         list.setOnItemClickListener((parent, view, position, id) -> {
+            //***position --> katera stevilka razpisa je na position
             switch (position) {
                 case 0:
                     startActivity(new Intent(ActivityRazpisi.this, Razpis1.class));
@@ -141,10 +110,9 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
 
         String rezultat = sb.toString();
 
-        //Toast.makeText(this, rezultat, Toast.LENGTH_LONG).show();
         seznamRazpisov = new RazpisiJsonParser().parseToArrayList(rezultat);
         //System.out.println(seznamRazpisov);
-        SimpleAdapter adapter = new SimpleAdapter(
+        adapter = new SimpleAdapter(
                 this,
                 seznamRazpisov,
                 R.layout.list_view_items,
@@ -153,18 +121,21 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         );
 
         list = findViewById(R.id.nabor_razpisov);
-        list.setAdapter(adapter);
+        list.setAdapter(adapter); //branje razpisov iz json file
     }
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        editsearch.clearFocus();
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        (adapter).getFilter().filter(newText);
         return false;
     }
+
 
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityRazpisi.this, ActivitySPOK.class);

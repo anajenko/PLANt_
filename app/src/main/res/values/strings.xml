@@ -14,17 +14,6 @@
     <string name="razpisi_title">Razpisi</string>
     <string name="plant_naslovapp">PLANt</string>
 
-    <string-array name="reg_nabor_razpisov">
-        <item>Elektronska glasba</item>
-        <item>Jazz</item>
-        <item>Klasična glasba</item>
-        <item>Ljudska glasba</item>
-        <item>Pop</item>
-        <item>Rap</item>
-        <item>Rock</item>
-        <item>Drugo</item>
-    </string-array>
-
 
     <!-- urnik -->
     <!-- string name="app_name">CalendarAppExample</string-->
