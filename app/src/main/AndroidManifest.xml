@@ -16,7 +16,7 @@
             android:name=".ActivitySPOK"
             android:exported="true"
             android:launchMode="singleTask"
-            android:label="Splošni podatki o kmetiji">
+            android:label="Splošni podatki o kmetu in kmetiji">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,10 +32,6 @@
             android:label="Razpisi"/>
         <activity
             android:name=".Razpis1"/>
-        <activity
-            android:name=".Razpis2"/>
-        <activity
-            android:name=".Razpis3" />
     </application>
 
 </manifest>

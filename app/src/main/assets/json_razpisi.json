@@ -3,57 +3,57 @@
     {
       "num": "1",
       "title": "Kupovanje novih panjev",
-      "description": ""
+      "description": "To je opis razpisa st1 (kupovanje novih panjev)."
     },
     {
       "num": "2",
       "title": "Denarna pomoč za žrtve poplave",
-      "description": ""
+      "description": "To je opis razpisa st2 (denarna pomoč za žrtve poplave)."
     },
     {
       "num": "3",
       "title": "Gnojila",
-      "description": ""
+      "description": "To je opis razpisa st3 (gnojila)."
     },
     {
       "num": "4",
       "title": "Predsednik kmetijske zadruge",
-      "description": ""
+      "description": "To je opis razpisa st4 (predsednik kmetijske zadruge)."
     },
     {
       "num": "5",
       "title": "Finančni dodatek kmetu",
-      "description": ""
+      "description": "To je opis razpisa st5 (finančni dodatek kmetu)."
     },
     {
       "num": "6",
       "title": "Podarjena koza",
-      "description": ""
+      "description": "To je opis razpisa st6 (podarjena koza)."
     },
     {
       "num": "7",
       "title": "Brezplačno seme češnjevcev",
-      "description": ""
+      "description": "To je opis razpisa st7 (brezplačno seme češnjevcev)."
     },
     {
       "num": "8",
       "title": "Prehranski dodatki za kokoši",
-      "description": ""
+      "description": "To je opis razpisa st8 (prehranski dodatki za kokoši)."
     },
     {
       "num": "9",
       "title": "Avtomatska vrata za kokošnjak",
-      "description": ""
+      "description": "To je opis razpisa st9 (avtomatska vrata za kokošnjak)."
     },
     {
       "num": "10",
       "title": "Samovozeča kosilnica",
-      "description": ""
+      "description": "To je opis razpisa st10 (samovozeča kosilnica)."
     },
     {
       "num": "11",
-      "title": "Tečaj 'candlinga'",
-      "description": ""
+      "title": "Tečaj candling-a",
+      "description": "To je opis razpisa st11 (tečaj candling-a)."
     }
   ]
 }

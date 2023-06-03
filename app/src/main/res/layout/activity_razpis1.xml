@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Razpis1"
-    android:background="@drawable/ozadje_bright1">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RAZPIS 1"
-        android:layout_gravity="center"
-        android:textSize="18sp" />
+    android:background="@drawable/ozadje_bright1"
+    android:orientation="vertical">
 
     <ImageButton
         android:layout_width="50dp"
@@ -24,4 +17,33 @@
         android:onClick="finishRazpis"
         />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/razpisXtv"
+        android:text="@string/razpis_x"
+        android:layout_gravity="center_horizontal"
+        android:textSize="22sp"
+        android:padding="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/razpisXnaslov"
+        android:text="@string/razpis_x_naslov"
+        android:layout_gravity="center_horizontal"
+        android:textSize="24sp"
+        android:padding="10dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/razpisXopis"
+        android:text="@string/razpis_x_opis"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:padding="40dp"/>
+
+</LinearLayout>

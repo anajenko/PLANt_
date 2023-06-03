@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -32,57 +31,45 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
 
+        //NAPOLNI TABELO S PODATKI IZ JSON DATOTEKE
+        list = findViewById(R.id.nabor_razpisov);
         try {
             preberiRazpise();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        list = findViewById(R.id.nabor_razpisov);
-
-        //***tole bo slo se ven
-        list.setOnItemClickListener((parent, view, position, id) -> {
-            //Toast.makeText(this, "Klik na " + position, Toast.LENGTH_SHORT).show();
-            String ime = (String) ((HashMap)seznamRazpisov.get(position)).get("title");
-            Toast.makeText(this, "Klik na " + ime, Toast.LENGTH_SHORT).show();
-        });
 
         //ISKANJE
         editsearch = (SearchView) findViewById(R.id.search);
         editsearch.setOnQueryTextListener(this); //onQueryTextSubmit, onQueryTextChange
 
-        //drugi del
+        //ODPIRANJE POSAMEZNEGA RAZPISA
         list.setOnItemClickListener((parent, view, position, id) -> {
-            //***position --> katera stevilka razpisa je na position
-            switch (position) {
-                case 0:
-                    startActivity(new Intent(ActivityRazpisi.this, Razpis1.class));
-                    break;
-                case 1:
-                    startActivity(new Intent(ActivityRazpisi.this, Razpis2.class));
-                    break;
-                case 2:
-                    startActivity(new Intent(ActivityRazpisi.this, Razpis3.class));
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    break;
-                case 10:
-                    break;
-                case 11:
-                    break;
-            }
+            Intent n = new Intent(this, Razpis1.class);
+            int st = -1;
+            String naslov = null;
+            String opis = null;
 
+            //izbrani element arraylista --> stRazpisa = num
+            Object o = adapter.getItem(position);
+            HashMap hm = (HashMap) o;
+            int stRazpisa = Integer.parseInt(hm.get("num").toString());
+
+            for (HashMap<String, String> entry: seznamRazpisov) {
+                int num = Integer.parseInt(entry.get("num"));
+                if (num == stRazpisa) {
+                    //v seznamRazpisov preberes
+                    st = stRazpisa;
+                    naslov = entry.get("title");
+                    opis = entry.get("description");
+                    break;
+                }
+            }
+            //posreduj podatke: title, description
+            n.putExtra("stevilkaVpolju", st);
+            n.putExtra("naslov", naslov);
+            n.putExtra("opis", opis);
+            startActivity(n);
         });
     }
 
@@ -120,7 +107,6 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
                 new int[] {R.id.num, R.id.title}
         );
 
-        list = findViewById(R.id.nabor_razpisov);
         list.setAdapter(adapter); //branje razpisov iz json file
     }
 
@@ -132,6 +118,7 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        //OB ISKANJU FILTRIRAJ RAZPISE
         (adapter).getFilter().filter(newText);
         return false;
     }
