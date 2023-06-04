@@ -1,12 +1,16 @@
 package si.uni_lj.fe.tnuv.plant;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +30,8 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView;
 
+    LinearLayout layout;
+    SwipeListener swipeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +45,10 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
         initWidgets();
         CalendarUtils.selectedDate = LocalDate.now();
         setMonthView();
+
+        //SWIPE-anje
+        layout = findViewById(R.id.urnik_ll);
+        swipeListener = new SwipeListener(layout);
     }
 
     private void initWidgets()
@@ -84,6 +94,57 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
     {
         startActivity(new Intent(this, WeekViewActivity.class));
     }
+
+    private class SwipeListener implements View.OnTouchListener {
+        GestureDetector gestureDetector;
+
+        SwipeListener(View view) {
+            int threshold = 100;
+            int velocity_threshold = 100;
+
+            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onDown(@NonNull MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+                    float xDiff = e2.getX() - e1.getX();
+
+                    try {
+                        if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
+                            if (xDiff > 0) {
+                                //swiped right --> hocmo it left --> startActivitySPOK();
+                                Intent intent = new Intent(ActivityUrnik.this, ActivitySPOK.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.levo_1, R.anim.levo_2);
+                            } else {
+                                //swiped left --> hocmo it right --> startActivityRazpis();
+                                Intent intent = new Intent(ActivityUrnik.this, ActivityRazpisi.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.desno_1, R.anim.desno_2);
+                            }
+                            return true;
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    return super.onFling(e1, e2, velocityX, velocityY);
+                }
+            };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return gestureDetector.onTouchEvent(event);
+        }
+
+    }
+
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityUrnik.this, ActivitySPOK.class);
         startActivity(intent);
@@ -98,5 +159,4 @@ public class ActivityUrnik extends AppCompatActivity implements CalendarAdapter.
         startActivity(intent);
         overridePendingTransition(R.anim.desno_1,R.anim.desno_2);
     }
-
 }

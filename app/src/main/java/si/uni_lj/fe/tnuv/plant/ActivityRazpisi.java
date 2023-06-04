@@ -2,8 +2,13 @@ package si.uni_lj.fe.tnuv.plant;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.widget.SearchView;
@@ -22,6 +27,9 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
     SearchView editsearch;
     private ArrayList<HashMap<String, String>> seznamRazpisov;
     SimpleAdapter adapter;
+
+    LinearLayout layout;
+    SwipeListener swipeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +79,10 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
             n.putExtra("opis", opis);
             startActivity(n);
         });
+
+        //SWIPE-anje
+        layout = findViewById(R.id.razpisi_ll);
+        swipeListener = new SwipeListener(layout);
     }
 
     private void preberiRazpise() throws IOException {
@@ -123,6 +135,51 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
         return false;
     }
 
+    private class SwipeListener implements View.OnTouchListener {
+        GestureDetector gestureDetector;
+
+        SwipeListener(View view) {
+            int threshold = 100;
+            int velocity_threshold = 100;
+
+            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onDown(@NonNull MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+                    float xDiff = e2.getX() - e1.getX();
+
+                    try {
+                        if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
+                            if (xDiff > 0) {
+                                //swiped right --> hocmo it left --> startActivityUrnik();
+                                Intent intent = new Intent(ActivityRazpisi.this, ActivityUrnik.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.levo_1,R.anim.levo_2);
+                            } else {
+                                //swiped left --> hocmo it right --> startActivityRazpisi();
+                            }
+                            return true;
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                    return super.onFling(e1, e2, velocityX, velocityY);
+                }
+            };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return gestureDetector.onTouchEvent(event);
+        }
+    }
 
     public void startActivitySPOK(View v) {
         Intent intent = new Intent(ActivityRazpisi.this, ActivitySPOK.class);
@@ -138,4 +195,6 @@ public class ActivityRazpisi extends AppCompatActivity implements SearchView.OnQ
 
     public void startActivityRazpisi(View v) {
     }
+
+
 }

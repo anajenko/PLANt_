@@ -5,20 +5,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Objects;
 
 public class ActivitySPOK extends AppCompatActivity {
+
+    LinearLayout layout;
+    SwipeListener swipeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +37,19 @@ public class ActivitySPOK extends AppCompatActivity {
         ///prenos fokusa iz ime v priimek
         final EditText ime = (EditText)findViewById(R.id.vnosno_ime);
         final EditText priimek = (EditText)findViewById(R.id.vnosno_priimek);
-        ime.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_NEXT) {
-                    priimek.requestFocus();
-                    return true;
-                }
-                return false;
+        ime.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                priimek.requestFocus();
+                return true;
             }
+            return false;
         });
 
-
-
         findViewById(R.id.btn_spok_shrani).setOnClickListener(v -> shrani());
+
+        //SWIPE-anje
+        layout = findViewById(R.id.spok_ll);
+        swipeListener = new SwipeListener(layout);
     }
 
     private void shrani() {
@@ -100,6 +105,52 @@ public class ActivitySPOK extends AppCompatActivity {
             }
         }
         return super.dispatchTouchEvent( event );
+    }
+
+    private class SwipeListener implements View.OnTouchListener {
+        GestureDetector gestureDetector;
+
+        SwipeListener(View view) {
+            int threshold = 100;
+            int velocity_threshold = 100;
+
+            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onDown(@NonNull MotionEvent e) {
+                    return true;
+                }
+
+                @Override
+                public boolean onFling(@NonNull MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
+                    float xDiff = e2.getX() - e1.getX();
+
+                    try {
+                        if (Math.abs(xDiff) > threshold && Math.abs(velocityX) > velocity_threshold) {
+                            if (xDiff > 0) {
+                                //swiped right --> hocmo it left --> startActivitySPOK();
+                            } else {
+                                //swiped left --> hocmo it right --> startActivityUrnik();
+                                Intent intent = new Intent(ActivitySPOK.this, ActivityUrnik.class);
+                                startActivity(intent);
+                                overridePendingTransition(R.anim.desno_1,R.anim.desno_2);
+                            }
+                            return true;
+                        }
+                    } catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                    return super.onFling(e1, e2, velocityX, velocityY);
+                }
+            };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return gestureDetector.onTouchEvent(event);
+        }
     }
 
     public void startActivitySPOK(View v) {
