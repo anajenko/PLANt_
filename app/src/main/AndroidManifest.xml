@@ -25,6 +25,9 @@
         </activity>
         <activity android:name=".ActivityUrnik"
             android:label="Urnik"/>
+        <activity
+            android:name=".DailyCalendarActivity"
+            android:exported="true" />
         <activity android:name=".WeekViewActivity" />
         <activity android:name=".EventEditActivity" />
         <activity android:name=".ActivityRazpisi"

@@ -1,6 +1,6 @@
 package si.uni_lj.fe.tnuv.plant;
 
-import androidx.appcompat.app.ActionBar;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,13 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-//import android.widget.Toast;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Objects;
 
-//import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInMonthArray;
+import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInMonthArray;
 import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInWeekArray;
 import static si.uni_lj.fe.tnuv.plant.CalendarUtils.monthYearFromDate;
 
@@ -31,10 +30,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
-
-        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
-
         initWidgets();
         setWeekView();
     }
@@ -55,7 +50,7 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEventAdapter();
+        setEventAdpater();
     }
 
 
@@ -82,10 +77,10 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     protected void onResume()
     {
         super.onResume();
-        setEventAdapter();
+        setEventAdpater();
     }
 
-    private void setEventAdapter()
+    private void setEventAdpater()
     {
         ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
         EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
@@ -97,5 +92,8 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         startActivity(new Intent(this, EventEditActivity.class));
     }
 
-
+    public void dailyAction(View view)
+    {
+        startActivity(new Intent(this, DailyCalendarActivity.class));
+    }
 }
