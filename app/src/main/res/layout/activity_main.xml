@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitySPOK"
-    android:orientation="vertical"
-    android:padding="30dp">
+    android:padding="16dp"
+    tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:orientation="vertical"
+    <Button
+        android:id="@+id/btn_razpisi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:text="RAZPISI"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_urnik" />
 
-        <Button
-            android:id="@+id/btn_spok"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="SPOK"
-            android:onClick="startActivitySPOK"
-            android:layout_alignParentBottom="true"
-            />
+    <Button
+        android:id="@+id/btn_spok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SPOK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_urnik"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/btn_urnik"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/urnik_title"
-            android:onClick="startActivityUrnik"
-            android:layout_toEndOf="@id/btn_spok"
-            android:layout_alignParentBottom="true"
-            />
+    <Button
+        android:id="@+id/btn_urnik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URNIK"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_razpisi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_spok" />
 
-        <Button
-            android:id="@+id/btn_razpisi"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/razpisi_title"
-            android:onClick="startActivityRazpisi"
-            android:layout_toEndOf="@id/btn_urnik"
-            android:layout_alignParentBottom="true"
-            />
+    <FrameLayout
+        android:id="@+id/flFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
 
-    </RelativeLayout>
+        app:layout_constraintBottom_toTopOf="@+id/btn_spok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_urnik" />
 
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
