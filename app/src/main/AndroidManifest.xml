@@ -16,7 +16,7 @@
             android:name=".ActivitySPOK"
             android:exported="true"
             android:launchMode="singleTask"
-            android:label="Splošni podatki o kmetu in kmetiji">
+            android:label="PLANt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
