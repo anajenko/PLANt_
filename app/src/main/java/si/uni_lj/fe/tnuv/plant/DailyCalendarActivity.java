@@ -2,6 +2,7 @@ package si.uni_lj.fe.tnuv.plant;
 
 import static si.uni_lj.fe.tnuv.plant.CalendarUtils.selectedDate;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class DailyCalendarActivity extends AppCompatActivity
 {
@@ -29,6 +31,10 @@ public class DailyCalendarActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_calendar);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+
         initWidgets();
     }
 

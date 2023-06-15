@@ -1,5 +1,6 @@
 package si.uni_lj.fe.tnuv.plant;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,12 +10,17 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Objects;
+
 public class Razpis1 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_razpis1);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
 
         Intent mIntent = getIntent();
         int st = mIntent.getIntExtra("stevilkaVpolju", -1);

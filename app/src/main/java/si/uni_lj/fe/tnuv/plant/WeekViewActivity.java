@@ -1,6 +1,7 @@
 package si.uni_lj.fe.tnuv.plant;
 
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInMonthArray;
 import static si.uni_lj.fe.tnuv.plant.CalendarUtils.daysInWeekArray;
@@ -30,6 +32,10 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week_view);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.toolbar_title_layout);
+
         initWidgets();
         setWeekView();
     }

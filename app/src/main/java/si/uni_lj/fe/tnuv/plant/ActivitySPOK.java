@@ -85,7 +85,7 @@ public class ActivitySPOK extends AppCompatActivity {
         ///editor.commit(); rajs apply
         editor.apply();
 
-        ((TextView) findViewById(R.id.izpis)).setText(ime + " " + priimek + " " + naslov + " " + katastrska + " " + panoga + " " + drugo);
+        ((TextView) findViewById(R.id.izpis)).setText("Shranjeni podatki: " + ime + " " + priimek + " " + naslov + " " + katastrska + " " + panoga + " " + drugo);
 
     }
 
