@@ -1,21 +1,25 @@
 package si.uni_lj.fe.tnuv.plant;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.time.LocalDate;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link UrnikFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UrnikFragment extends Fragment {
+public class UrnikFragment extends Fragment implements CalendarAdapter.OnItemListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,5 +68,53 @@ public class UrnikFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_urnik, container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
+        loadFragment(new MesecFragment());
+
+        Button button1 = view.findViewById(R.id.btn_mesec);
+        Button button2 = view.findViewById(R.id.btn_teden);
+        Button button3 = view.findViewById(R.id.btn_dan);
+
+        // Set onClickListeners for your buttons
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new MesecFragment());
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new TedenFragment());
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadFragment(new DanFragment());
+            }
+        });
+    }
+
+    private void loadFragment(Fragment fragment) {
+        // create a FragmentManager
+        FragmentManager fm = getFragmentManager();
+        // create a FragmentTransaction to begin the transaction and replace the Fragment
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        // replace the FrameLayout with new Fragment
+        fragmentTransaction.replace(R.id.flUrnikFrameFragment, fragment);
+        fragmentTransaction.commit(); // save the changes
+    }
+
+    @Override
+    public void onItemClick(int position, LocalDate date) {
+
+    }
 }
+
+
