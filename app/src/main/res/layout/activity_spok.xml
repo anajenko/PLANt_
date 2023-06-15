@@ -38,7 +38,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/spok_ime_hint"
                 android:inputType="textCapWords"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                />
 
             <EditText
                 android:id="@+id/vnosno_priimek"
@@ -81,14 +82,15 @@
             android:layout_marginVertical="5dp"
             android:hint="@string/spok_drugo_hint"
             android:inputType="textCapSentences"
-            android:background="@drawable/background_drugo"/>
-        <!--android:layout_height="160dp"-->
+            android:background="@drawable/background_drugo" />
 
         <Button
             android:id="@+id/btn_spok_shrani"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:text="@string/spok_shrani"/>
 
         <TextView

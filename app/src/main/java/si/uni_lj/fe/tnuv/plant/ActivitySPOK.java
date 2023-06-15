@@ -3,6 +3,8 @@ package si.uni_lj.fe.tnuv.plant;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -11,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Objects;
 
@@ -25,6 +29,8 @@ public class ActivitySPOK extends AppCompatActivity {
 
     LinearLayout layout;
     SwipeListener swipeListener;
+
+    boolean clickedShrani = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +88,44 @@ public class ActivitySPOK extends AppCompatActivity {
         editor.putString(katastrskaKljuc, katastrska);
         editor.putString(panogaKljuc, panoga);
         editor.putString(drugoKljuc, drugo);
-        ///editor.commit(); rajs apply
         editor.apply();
 
-        ((TextView) findViewById(R.id.izpis)).setText("Shranjeni podatki: " + ime + " " + priimek + " " + naslov + " " + katastrska + " " + panoga + " " + drugo);
+        String izpis = null;
+        //če je bilo karkoli vpisano v polje "ime"
+        if (!vnosno1.getText().toString().matches("")) {
+            izpis = "Vaši podatki so bili uspešno shranjeni.";
 
+            //če je prvič, je clickedShrani = false
+            if (!clickedShrani) {
+                System.out.println("PRITISNJEN PRVIC");
+                Button btn = findViewById(R.id.btn_spok_shrani);
+                btn.setText("Shrani spremembe");
+            }
+
+            pobarvajIzpolnjeno(vnosno1);
+            pobarvajIzpolnjeno(vnosno2);
+            pobarvajIzpolnjeno(vnosno3);
+            pobarvajIzpolnjeno(vnosno4);
+            pobarvajIzpolnjeno(vnosno5);
+            pobarvajIzpolnjeno(vnosno6);
+
+            clickedShrani = true;
+        } else {
+            izpis = "Pred shranjevanjem vpišite svoje podatke.";
+            Button btn = findViewById(R.id.btn_spok_shrani);
+            btn.setText("Shrani");
+        }
+
+        ((TextView) findViewById(R.id.izpis)).setText(izpis);
+
+    }
+
+    private void pobarvajIzpolnjeno(EditText e) {
+        if (!e.getText().toString().matches("")) {
+            //pobarvaj
+            System.out.println("POBARVANO");
+            e.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.grayTr), PorterDuff.Mode.SRC);
+        }
     }
 
     ///da se fokus zgubi ko kliknes ven iz okna za vpis

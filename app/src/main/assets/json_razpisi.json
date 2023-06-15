@@ -54,6 +54,26 @@
       "num": "11",
       "title": "Tečaj candling-a",
       "description": "To je opis razpisa st11 (tečaj candling-a)."
+    },
+    {
+      "num": "12",
+      "title": "Tečaj oranja",
+      "description": "To je opis razpisa st12 (tečaj candling-a)."
+    },
+    {
+      "num": "13",
+      "title": "Tečaj za voznika traktorja",
+      "description": "To je opis razpisa st13 (tečaj za voznika traktorja)."
+    },
+    {
+      "num": "14",
+      "title": "Nagrada Naj-kmet",
+      "description": "To je opis razpisa st14 (naj-kmet)."
+    },
+    {
+      "num": "15",
+      "title": "Odkup hlevskega gnoja",
+      "description": "To je opis razpisa st15 (odkup hlevskega gnoja)."
     }
   ]
 }
