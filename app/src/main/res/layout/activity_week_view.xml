@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".WeekViewActivity"
-    android:orientation="vertical"
-    android:padding="30dp"
-    android:background="@drawable/ozadje_bright1">
-
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,18 +7,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".WeekViewActivity">
+        tools:context=".WeekViewActivity"
+        android:background="@drawable/ozadje_bright1">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Dan"
-            android:textColor="@color/white"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="dailyAction"
-            android:textSize="20sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="vertical"
+        android:padding="30dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="SUN"
+                android:text="SOB"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -88,7 +76,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="MON"
+                android:text="PON"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -97,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TUE"
+                android:text="TOR"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -106,7 +94,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="WED"
+                android:text="SRE"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -115,7 +103,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="THUR"
+                android:text="ČET"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -124,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="FRI"
+                android:text="PET"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -133,7 +121,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="SAT"
+                android:text="NED"
                 android:textColor="@color/gray"
                 android:textAlignment="center"
                 android:textSize="16sp"/>
@@ -148,16 +136,47 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
 
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dodaj dogodek"
-            android:textColor="@color/white"
-            android:background="@null"
-            android:textStyle="bold"
-            android:onClick="newEventAction"
-            android:layout_gravity="center"
-            android:textSize="15sp"/>
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:background="@null"
+                android:onClick="newEventAction"
+                android:text="Dodaj dogodek"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.5" >
+            </Space>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="Dan"
+                android:textColor="@color/white"
+                android:background="@null"
+                android:textStyle="bold"
+                android:onClick="dailyAction"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
         <ListView
             android:id="@+id/eventListView"
@@ -215,9 +234,4 @@
         </RelativeLayout-->
     </LinearLayout>
 
-
-
-
-
-</LinearLayout>
 
