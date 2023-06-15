@@ -30,7 +30,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/baseline_arrow_back_24"
-                android:onClick="previousMonthAction"
+                android:onClick="previousWeekAction"
                 android:scaleType="fitCenter"
                 android:layout_marginRight="15dp"
                 android:background="@color/zelena1"
@@ -51,7 +51,7 @@
                 android:layout_height="30dp"
                 android:layout_weight="1"
                 android:src="@drawable/baseline_arrow_forward_24"
-                android:onClick="nextMonthAction"
+                android:onClick="nextWeekAction"
                 android:scaleType="fitCenter"
                 android:layout_marginLeft="15dp"
                 android:background="@color/zelena1"/>
