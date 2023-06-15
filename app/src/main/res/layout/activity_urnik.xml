@@ -43,7 +43,7 @@
                 android:onClick="previousMonthAction"
                 android:scaleType="fitCenter"
                 android:layout_marginRight="15dp"
-                android:background="@color/zelena1"
+                android:background="@drawable/button_round"
                 />
 
             <TextView
@@ -64,7 +64,7 @@
                 android:onClick="nextMonthAction"
                 android:scaleType="fitCenter"
                 android:layout_marginLeft="15dp"
-                android:background="@color/zelena1"/>
+                android:background="@drawable/button_round"/>
 
         </LinearLayout>
 

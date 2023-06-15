@@ -34,8 +34,7 @@
             android:onClick="previousDayAction"
             android:scaleType="fitCenter"
             android:layout_marginRight="15dp"
-            android:background="@color/zelena1"
-            />
+            android:background="@drawable/button_round" />
 
         <TextView
             android:id="@+id/monthDayText"
@@ -55,7 +54,7 @@
             android:onClick="nextDayAction"
             android:scaleType="fitCenter"
             android:layout_marginLeft="15dp"
-            android:background="@color/zelena1"/>
+            android:background="@drawable/button_round"/>
 
     </LinearLayout>
 
