@@ -97,7 +97,6 @@ public class ActivitySPOK extends AppCompatActivity {
 
             //če je prvič, je clickedShrani = false
             if (!clickedShrani) {
-                System.out.println("PRITISNJEN PRVIC");
                 Button btn = findViewById(R.id.btn_spok_shrani);
                 btn.setText("Shrani spremembe");
             }
@@ -123,7 +122,6 @@ public class ActivitySPOK extends AppCompatActivity {
     private void pobarvajIzpolnjeno(EditText e) {
         if (!e.getText().toString().matches("")) {
             //pobarvaj
-            System.out.println("POBARVANO");
             e.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.grayTr), PorterDuff.Mode.SRC);
         }
     }
